@@ -28,7 +28,7 @@ export const WeatherProvider = ({ children }) => {
 
       const getWeather = async () => {
         const response = await fetch(
-          `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=Metric&id=524901&appid=d67bbc6651aa1de7c3ecf3f5adabf4e0`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=Metric&id=524901&appid=d67bbc6651aa1de7c3ecf3f5adabf4e0`
         );
         const { main, wind, weather } = await response.json();
 
