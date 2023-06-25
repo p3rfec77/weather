@@ -40,7 +40,7 @@ export const WeatherProvider = ({ children }) => {
 
         const [weatherData] = weather;
         setDescription(weatherData.description);
-        setIcon(`/public/icons/${weatherData.icon}.png`);
+        setIcon(`icons/${weatherData.icon}.png`);
       };
 
       getWeather();

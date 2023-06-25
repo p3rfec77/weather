@@ -17,10 +17,6 @@ const CurrentWeather = () => {
     humidity,
   } = useContext(WeatherContext);
 
-  if (search) {
-    console.log(search.label);
-  }
-
   return (
     <Fragment>
       {search && (
