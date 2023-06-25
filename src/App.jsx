@@ -1,9 +1,12 @@
 import "./App.css";
+import CurrentWeather from "./components/current-weather/current-weather.component";
+import Search from "./components/search/search.component";
 
 const App = () => {
   return (
-    <div>
-      <h1>weather</h1>
+    <div className="container">
+      <Search />
+      <CurrentWeather />
     </div>
   );
 };
