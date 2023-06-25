@@ -20,7 +20,7 @@ export const WeatherProvider = ({ children }) => {
   const [feelsLike, setFeelsLike] = useState("");
   const [wind, setWind] = useState("");
   const [humidity, setHumidity] = useState("");
-  const [preassure, setPreassure] = useState("");
+  const [pressure, setPressure] = useState("");
 
   useEffect(() => {
     if (search) {
@@ -32,11 +32,13 @@ export const WeatherProvider = ({ children }) => {
         );
         const { main, wind, weather } = await response.json();
 
+        console.log(main);
+
         setTemperature(Math.round(main.temp));
         setFeelsLike(Math.round(main.feels_like));
         setWind(Math.round(wind.speed));
         setHumidity(main.humidity);
-        setPreassure(main.preassure);
+        setPressure(main.pressure);
 
         const [weatherData] = weather;
         setDescription(weatherData.description);
@@ -54,7 +56,7 @@ export const WeatherProvider = ({ children }) => {
     feelsLike,
     wind,
     humidity,
-    preassure,
+    pressure,
   };
 
   return (

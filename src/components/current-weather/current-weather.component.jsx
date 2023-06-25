@@ -13,7 +13,7 @@ const CurrentWeather = () => {
     icon,
     feelsLike,
     wind,
-    preassure,
+    pressure,
     humidity,
   } = useContext(WeatherContext);
 
@@ -43,7 +43,7 @@ const CurrentWeather = () => {
 
               <div className="detail__wrapper">
                 <span className="detail__title">Wind</span>
-                <span className="detail__value">{wind}m/s</span>
+                <span className="detail__value">{wind} m/s</span>
               </div>
 
               <div className="detail__wrapper">
@@ -52,8 +52,8 @@ const CurrentWeather = () => {
               </div>
 
               <div className="detail__wrapper">
-                <span className="detail__title">Preassure</span>
-                <span className="detail__value">{preassure}hPa</span>
+                <span className="detail__title">Pressure</span>
+                <span className="detail__value">{pressure} hPa</span>
               </div>
             </div>
           </div>
