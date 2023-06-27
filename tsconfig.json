@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "target": "ESNext",
+    "types": ["vite/client"],
+    "module": "ESNext",
+    "moduleResolution": "node"
+  }
+}
