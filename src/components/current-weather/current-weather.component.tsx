@@ -1,11 +1,11 @@
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext } from "react";
 
 import { WeatherContext } from "../../context/weather.context";
 import { SearchCotnext } from "../../context/search.context";
 
 import "./current-weather.styles.css";
 
-const CurrentWeather = () => {
+const CurrentWeather = (): React.JSX.Element => {
   const { search } = useContext(SearchCotnext);
   const {
     temperature,

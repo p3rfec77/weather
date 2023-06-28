@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-
-import { SearchProvider } from "./context/search.context.jsx";
-import { WeatherProvider } from "./context/weather.context.jsx";
+import App from "./App";
+import { SearchProvider } from "./context/search.context";
+import { WeatherProvider } from "./context/weather.context";
 
 import "./index.css";
 

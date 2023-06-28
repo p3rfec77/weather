@@ -2,37 +2,53 @@ import { useContext, createContext, useState, useEffect } from "react";
 
 import { SearchCotnext } from "./search.context";
 
+interface IWeatherContext {
+  temperature: number;
+  description: string;
+  icon: string;
+  feelsLike: number;
+  wind: number;
+  humidity: number;
+  pressure: number;
+}
+
 export const WeatherContext = createContext({
-  temperature: "",
+  temperature: 0,
   description: "",
   icon: "",
-  feelsLike: "",
-  wind: "",
-  humidity: "",
-  preassure: "",
+  feelsLike: 0,
+  wind: 0,
+  humidity: 0,
+  pressure: 0,
 });
 
 export const WeatherProvider = ({ children }) => {
   const { search } = useContext(SearchCotnext);
-  const [temperature, setTemperature] = useState("");
+  const [temperature, setTemperature] = useState(0);
   const [description, setDescription] = useState("");
   const [icon, setIcon] = useState("");
-  const [feelsLike, setFeelsLike] = useState("");
-  const [wind, setWind] = useState("");
-  const [humidity, setHumidity] = useState("");
-  const [pressure, setPressure] = useState("");
+  const [feelsLike, setFeelsLike] = useState(0);
+  const [wind, setWind] = useState(0);
+  const [humidity, setHumidity] = useState(0);
+  const [pressure, setPressure] = useState(0);
 
   useEffect(() => {
     if (search) {
-      const [lat, lon] = search.value.split(" ");
+      const [lat, lon]: string = search.value.split(" ");
 
-      const getWeather = async () => {
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=Metric&id=524901&appid=d67bbc6651aa1de7c3ecf3f5adabf4e0`
-        );
+      const url = new URL(
+        "https://api.openweathermap.org/data/2.5/weather?id=524901&appid=d67bbc6651aa1de7c3ecf3f5adabf4e0"
+      );
+      const params: URLSearchParams = url.searchParams;
+
+      params.set("units", "Metric");
+      params.set("lat", lat);
+      params.set("lon", lon);
+      const WEATHER_URL: string = url.toString();
+
+      const getWeather = async (): Promise<void> => {
+        const response: Response = await fetch(WEATHER_URL);
         const { main, wind, weather } = await response.json();
-
-        console.log(main);
 
         setTemperature(Math.round(main.temp));
         setFeelsLike(Math.round(main.feels_like));
@@ -49,7 +65,7 @@ export const WeatherProvider = ({ children }) => {
     }
   }, [search]);
 
-  const value = {
+  const value: IWeatherContext = {
     temperature,
     description,
     icon,
